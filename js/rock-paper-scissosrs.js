@@ -190,10 +190,11 @@ $(document).ready(function(){
 
 	$( "#playImages img:first-child" ).click(function() {
 		$('#manualMode').hide();
-		// $('#rock').remove();
-		// $('#playImages').prepend('<img id="rock" src="../img/green_rock.png" alt="rock" name="rock">');
-		// $('.guest').remove();
-		// $('.computer').remove();
+		$( "#playImages img:first-child").addClass("imageSelected");
+		$( "#playImages img:nth-child(2)").removeClass("imageSelected");
+		$( "#playImages img:nth-child(3)").removeClass("imageSelected");
+
+		
 		playImageChild = "#playImages img:nth-child(1)";
 		animManual();
 		// choiceUser($( "#playImages img:nth-child(1)" ));
@@ -201,8 +202,10 @@ $(document).ready(function(){
 
 	$( "#playImages img:nth-child(2)" ).click(function() {
 		$('#manualMode').hide();
-		// $('.guest').remove();
-		// $('.computer').remove();
+		$( "#playImages img:nth-child(2)").addClass("imageSelected");
+		$( "#playImages img:nth-child(1)").removeClass("imageSelected");
+		$( "#playImages img:nth-child(3)").removeClass("imageSelected");
+
 		playImageChild = "#playImages img:nth-child(2)";
 		animManual();
 	  // choiceUser($( "#playImages img:nth-child(2)" ));
@@ -210,8 +213,11 @@ $(document).ready(function(){
 
 	$( "#playImages img:nth-child(3)" ).click(function() {
 		$('#manualMode').hide();
-		// $('.guest').remove();
-		// $('.computer').remove();
+		$( "#playImages img:nth-child(3)").addClass("imageSelected");
+		$( "#playImages img:nth-child(1)").removeClass("imageSelected");
+		$( "#playImages img:nth-child(2)").removeClass("imageSelected");
+
+	
 		playImageChild = "#playImages img:nth-child(3)";
 		animManual();
 	  // choiceUser($( "#playImages img:nth-child(3)" ));
@@ -229,7 +235,6 @@ $(document).ready(function(){
 	$('.computer').remove();
 	
 		if (playImageChild == "#playImages img:nth-child(1)") {
-			// $("#playImages :nth-child(1)").remove();
 			$('#userImage').prepend('<img id="simpleRock" src="../img/simple_rock.png" />');
 			$('#userImage').prepend('<h1 class="guest">GUEST</h1>')
 			itemSelectedUser = $("#playImages img:first-child").attr("name");
