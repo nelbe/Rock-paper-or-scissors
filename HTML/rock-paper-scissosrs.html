@@ -1,0 +1,95 @@
+<!Doctype html>
+<html  lang="es">
+	<head>
+		<title>ROCK-PAPER-SCISSORS</title>    
+    	<meta charset="UTF-8">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/rock-paper-scissosrs.js"></script>
+		<link rel="stylesheet" type="text/css" href="../CSS/rock-paper-scissosrs.css">
+	</head>
+
+	<body>    
+    <header>
+      <h1>ROCK, PAPER OR SCISSORS</h1>      
+    </header>    
+    <nav>
+    	<button type="button" id="manual">Manual</button>
+    	<button type="button" id="automatic">Automatic</button>
+    	<!--<button type="button" id="newGame">New game</button>-->
+    	<div id="roundToAutomaticPlay">
+    		<h3>How many rounds do you want to play?</h3>
+			<select id="numberRounds">
+			    <option selected value="1">1</option>
+			    <option value="2">2</option>
+			    <option value="3">3</option>
+			    <option value="4">4</option>
+			    <option value="5">5</option>
+			    <option value="6">6</option>
+			    <option value="7">7</option>
+			    <option value="8">8</option>
+			    <option value="9">9</option>
+			    <option value="10">10</option>
+			</select>
+			<button id="startButton">START</button>
+			<button id="stopButton">STOP</button>
+			<button id="automaticMode">EXIT AUTOMATIC MODE</button>
+			<hr>
+			<h3 class="numberRoundsAutomatic">Round: </h3>
+			<h1 class="numberRoundsAutomatic"></h1>
+		</div>
+		<div id="roundManualPlay">
+			<h3>Round: </h3>
+			<h1 id="numberRoundsManual"></h1>
+			<button id="manualMode">EXIT MANUAL MODE</button>
+		</div>
+      <!-- <a href="http://dominio.com/seccion2.html">IR SECCIÓN 2</a>
+      <a href="http://dominio.com/seccion2.html">IR SECCIÓN 3</a> -->
+    </nav>
+    <section>      
+      <article>
+        <!-- <h2>CONTENIDO PRINCIPAL</h2> -->
+        <!-- <p>Este es el contenido principal de mi web</p> -->
+        <div id="play">
+         	<div id="userImage">
+         		<h1 class="count"></h1>
+         		<!-- <img src="../img/rock.png" alt="rock" name="rock"> -->
+         	</div>
+         	<div id="computerImage">
+         		<h1 class="count"></h1>
+         		<!-- <img src="../img/rock.png" alt="rock" name="rock">	 -->
+         	</div>		
+          
+	        <div id="playImages">
+		    	<img src="../img/rock.png" alt="rock" name="rock">
+		        <img src="../img/paper.png" alt="paper" name="paper">
+		        <img src="../img/scissors.png" alt="scissors" name="scissors">
+        	</div>	       
+        </div>
+        <div id="scoreBoard">
+	    	<table class="scoreBoardTable" id="scoreBoardTable">
+				<thead>
+					<tr>
+					<th>Round</th>
+					<th>User</th>
+					<th>Computer</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+        </div>
+      </article>      
+    </section>
+    <!--<aside>
+      <h3>Banner de publicidad</h3>
+      <a href="http://dominio-externo.com">
+        <img src="http://dominio.com/banner-publicidad.png" alt="banner de publicidad">
+      </a>
+      <h3>Testimonios</h3>
+      <p>Me gusta mucho esta página.</p>
+    </aside>-->
+    <footer>
+      <h4></h4>
+    </footer>
+  </body>  
+</html>
