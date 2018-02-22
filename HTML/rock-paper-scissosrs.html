@@ -2,8 +2,22 @@
 <html  lang="es">
 	<head>
 		<title>ROCK-PAPER-SCISSORS</title>    
-    	<meta charset="UTF-8">
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  	<meta charset="UTF-8">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  	<!-- TABLE EXPORT!-->
+  	<script type="text/javascript" src="../libs/FileSaver/FileSaver.min.js"></script>
+    <script type="text/javascript" src="../libs/js-xlsx/xlsx.core.min.js"></script>
+    <script type="text/javascript" src="../libs/jsPDF/jspdf.min.js"></script>
+    <script type="text/javascript" src="../libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+    <script type="text/javascript" src="../tableExport.js"></script>
+    <!-- FONT AWESOME ICONS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <!-- DATATABLE -->
+    <script type="text/javascript" src="../DataTables/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../DataTables/datatables.min.css"/>
+
+    <!-- MY JS AND CSS -->
 		<script type="text/javascript" src="../js/rock-paper-scissosrs.js"></script>
 		<link rel="stylesheet" type="text/css" href="../CSS/rock-paper-scissosrs.css">
 	</head>
@@ -17,7 +31,7 @@
     	<button type="button" id="automatic">Automatic</button>
     	<!--<button type="button" id="newGame">New game</button>-->
     	<div id="roundToAutomaticPlay">
-    		<h3>How many rounds do you want to play?</h3>
+    		<h3>You are playing in automatic mode. How many rounds do you want to play?</h3>
 			<select id="numberRounds">
 			    <option selected value="1">1</option>
 			    <option value="2">2</option>
@@ -29,6 +43,7 @@
 			    <option value="8">8</option>
 			    <option value="9">9</option>
 			    <option value="10">10</option>
+			    <option value="100000">Unlimited</option>
 			</select>
 			<button id="startButton">START</button>
 			<button id="stopButton">STOP</button>
@@ -38,9 +53,12 @@
 			<h1 class="numberRoundsAutomatic"></h1>
 		</div>
 		<div id="roundManualPlay">
+			<h3>You are playing in manual mode, choose wisely!</h3>
+			<button id="manualMode">EXIT MANUAL MODE</button>
+			<hr>
 			<h3>Round: </h3>
 			<h1 id="numberRoundsManual"></h1>
-			<button id="manualMode">EXIT MANUAL MODE</button>
+			
 		</div>
       <!-- <a href="http://dominio.com/seccion2.html">IR SECCIÓN 2</a>
       <a href="http://dominio.com/seccion2.html">IR SECCIÓN 3</a> -->
@@ -51,32 +69,35 @@
         <!-- <p>Este es el contenido principal de mi web</p> -->
         <div id="play">
          	<div id="userImage">
+         		<!-- <p>Guest</p> -->
          		<h1 class="count"></h1>
          		<!-- <img src="../img/rock.png" alt="rock" name="rock"> -->
          	</div>
          	<div id="computerImage">
+         		<!-- <p>Computer</p> -->
          		<h1 class="count"></h1>
          		<!-- <img src="../img/rock.png" alt="rock" name="rock">	 -->
          	</div>		
-          
 	        <div id="playImages">
-		    	<img src="../img/rock.png" alt="rock" name="rock">
-		        <img src="../img/paper.png" alt="paper" name="paper">
-		        <img src="../img/scissors.png" alt="scissors" name="scissors">
+		    	<img id="rock" src="../img/rock.png" alt="rock" name="rock">
+		        <img id="paper" src="../img/paper.png" alt="paper" name="paper">
+		        <img id="scissors" src="../img/scissors.png" alt="scissors" name="scissors">
         	</div>	       
         </div>
         <div id="scoreBoard">
-	    	<table class="scoreBoardTable" id="scoreBoardTable">
-				<thead>
-					<tr>
-					<th>Round</th>
-					<th>User</th>
-					<th>Computer</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
+          <!-- <button>EXPORT <i class="far fa-file-pdf"></i></button> -->
+  	      <table class="scoreBoardTable table display" id="scoreBoardTable">
+  			    <thead>
+  				      <tr>
+  					      <th>Round</th>
+  					      <th>Guest</th>
+  					      <th>Computer</th>
+  					    </tr>
+  				    </thead>
+  				  <tbody>
+  				  </tbody>
+  			  </table>
+          <button>EXPORT <i class="far fa-file-pdf"></i></button>
         </div>
       </article>      
     </section>

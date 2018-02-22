@@ -10,8 +10,7 @@ $(document).ready(function(){
 	$('#playImages').hide();
 	$('#roundToAutomaticPlay').hide();
 	$('#roundManualPlay').hide();
-	// $('#automaticMode').hide();
-	// $('#manualMode').hide();
+	$("article button").addClass("disable");
 
 	// Enable and disable Manual and Automatic
 	$('#manual, #automatic').click(function () {
@@ -21,6 +20,8 @@ $(document).ready(function(){
 			$('#roundToAutomaticPlay').hide();
 			$('#roundManualPlay').show();
 	    	$('#roundManualPlay h1').html(round);
+	    	$('#userImage').prepend('<h1 class="guest">GUEST</h1>');
+			$('#computerImage').prepend('<h1 class="computer">COMPUTER</h1>');
 	   	}
 	    else if (this.id == 'automatic') {
 	        $('#manual').addClass("disable");
@@ -28,16 +29,18 @@ $(document).ready(function(){
 	        $('#roundToAutomaticPlay').show();
 	        $('#roundManualPlay').hide();
 	        $('#roundToAutomaticPlay h1').html(round);
+	        $('#userImage').prepend('<h1 class="guest">GUEST</h1>');
+			$('#computerImage').prepend('<h1 class="computer">COMPUTER</h1>');
 	   	}
 	});
 	
 	// New game button
-	$('#newGame').click(function() {
-		$('#roundToAutomaticPlay').hide();
-		$('#roundManualPlay').hide();
-		$('#startButton').removeClass("disable");
-		$('#stopButton').removeClass("disable");
-	}); 
+	// $('#newGame').click(function() {
+	// 	$('#roundToAutomaticPlay').hide();
+	// 	$('#roundManualPlay').hide();
+	// 	$('#startButton').removeClass("disable");
+	// 	$('#stopButton').removeClass("disable");
+	// }); 
 
 	// Start button
 	$('#startButton').click(function() {
@@ -49,18 +52,20 @@ $(document).ready(function(){
 		$('#stopButton').removeClass("disable");
 		roundAutomatic = parseInt($('select').val());
 		$("#scoreBoardTable").find("tbody>tr").remove();
+
 		numberAutomaticRound()
 	});  
 
 	// Stop button
 	$('#stopButton').click(function() {
 		roundAutomatic = 0;
-		$('#automaticMode').show();
+		// $('#automaticMode').show();
 		$('#numberRounds').prop('disabled', false);
 		$('#startButton').removeClass("disable");
 		$('#stopButton').addClass("disable");
 		$('#automaticMode').removeClass("disable");
 		$("#numberRounds").val('1');
+		$("article button").addClass("disable");
 		
 
 	}); 
@@ -74,6 +79,8 @@ $(document).ready(function(){
 		$('#userImage > img').remove();
 		$('#computerImage > img').remove();
 		$("#scoreBoardTable").find("tbody>tr").remove();
+		$('.guest').remove();
+		$('.computer').remove();
 		
 	}); 
 
@@ -87,6 +94,9 @@ $(document).ready(function(){
 		$('#userImage > img').remove();
 		$('#computerImage > img').remove();
 		$("#scoreBoardTable").find("tbody>tr").remove();
+		$("article button").addClass("disable");
+		$('.guest').remove();
+		$('.computer').remove();
 	}); 
 
 	function numberAutomaticRound() {
@@ -97,10 +107,11 @@ $(document).ready(function(){
 	}	
 
 	function animAutomatic() {
-		$('#roundToAutomaticPlay h1').html(round);
+		$('#roundToAutomaticPlay h1').html(round + " - PLAYING");
 		$('#userImage img').hide();
 		$('#computerImage img').hide();
 		$('.count').show();
+		$('#automaticMode').addClass("disable");
 
 	    if (count > 0) {
 	        $('.count').html(count);
@@ -120,20 +131,28 @@ $(document).ready(function(){
 		choiceRandomUser()
 		
 		if (itemSelectedComputer == "rock"){
-			$('#computerImage').prepend('<img id="" src="../img/simple_rock.png" />')
+			$('#computerImage').prepend('<img id="" src="../img/simple_rock.png" />');
+			$('#computerImage').prepend('<h1 class="computer">COMPUTER</h1>');
 		}else if (itemSelectedComputer == "paper") {
-			$('#computerImage').prepend('<img id="" src="../img/simple_paper.png" />')
+			$('#computerImage').prepend('<img id="" src="../img/simple_paper.png" />');
+			$('#computerImage').prepend('<h1 class="computer">COMPUTER</h1>');
 		}else{
-			$('#computerImage').prepend('<img id="" src="../img/simple_scissors.png" />')
+			$('#computerImage').prepend('<img id="" src="../img/simple_scissors.png" />');
+			$('#computerImage').prepend('<h1 class="computer">COMPUTER</h1>');
 		};	
 		
 		if (itemSelectedUser == "rock"){
-			$('#userImage').prepend('<img id="" src="../img/simple_rock.png" />')
+			$('#userImage').prepend('<img id="" src="../img/simple_rock.png" />');
+			$('#userImage').prepend('<h1 class="guest">GUEST</h1>');
 		}else if (itemSelectedUser == "paper") {
-			$('#userImage').prepend('<img id="" src="../img/simple_paper.png" />')
+			$('#userImage').prepend('<img id="" src="../img/simple_paper.png" />');
+			$('#userImage').prepend('<h1 class="guest">GUEST</h1>');
 		}else{
-			$('#userImage').prepend('<img id="" src="../img/simple_scissors.png" />')
+			$('#userImage').prepend('<img id="" src="../img/simple_scissors.png" />');
+			$('#userImage').prepend('<h1 class="guest">GUEST</h1>');
 		};		
+
+		$('#automaticMode').removeClass("disable");
 
 		addResultsToTheTable();
 
@@ -142,12 +161,13 @@ $(document).ready(function(){
 			// numberAutomaticRound();
 		}else{
 			$('#automaticMode').show();
+			$('#roundToAutomaticPlay h1').html(round + " - GAME OVER");
 			// alert("TU JUEGO HA TERMINADO")
 		};
 	}
 
 	function animManual() {
-		$('#roundManualPlay h1').html(round + 1);
+		$('#roundManualPlay h1').html(round + 1 + " - PLAYING");
 		$('#userImage img').hide();
 		$('#computerImage img').hide();
 		$('.count').show();
@@ -163,27 +183,36 @@ $(document).ready(function(){
 	        $('.count').hide();
 	        choiceUser();
 	        count = 3;
+	        // $('#playImages').prepend('<img id="rock" src="../img/rock.png" alt="rock" name="rock">');
 	    }
 	}
 
 
 	$( "#playImages img:first-child" ).click(function() {
 		$('#manualMode').hide();
-		playImageChild = "#playImages img:nth-child(1)"
+		// $('#rock').remove();
+		// $('#playImages').prepend('<img id="rock" src="../img/green_rock.png" alt="rock" name="rock">');
+		// $('.guest').remove();
+		// $('.computer').remove();
+		playImageChild = "#playImages img:nth-child(1)";
 		animManual();
 		// choiceUser($( "#playImages img:nth-child(1)" ));
 	});
 
 	$( "#playImages img:nth-child(2)" ).click(function() {
 		$('#manualMode').hide();
-		playImageChild = "#playImages img:nth-child(2)"
+		// $('.guest').remove();
+		// $('.computer').remove();
+		playImageChild = "#playImages img:nth-child(2)";
 		animManual();
 	  // choiceUser($( "#playImages img:nth-child(2)" ));
 	});
 
 	$( "#playImages img:nth-child(3)" ).click(function() {
 		$('#manualMode').hide();
-		playImageChild = "#playImages img:nth-child(3)"
+		// $('.guest').remove();
+		// $('.computer').remove();
+		playImageChild = "#playImages img:nth-child(3)";
 		animManual();
 	  // choiceUser($( "#playImages img:nth-child(3)" ));
 	});
@@ -197,27 +226,34 @@ $(document).ready(function(){
 		choiceRandomComputer();
 		deleteImageComputer();
 		deleteImageUser();
-
-
+	$('.computer').remove();
+	
 		if (playImageChild == "#playImages img:nth-child(1)") {
-			$('#userImage').prepend('<img id="simpleRock" src="../img/simple_rock.png" />')
+			// $("#playImages :nth-child(1)").remove();
+			$('#userImage').prepend('<img id="simpleRock" src="../img/simple_rock.png" />');
+			$('#userImage').prepend('<h1 class="guest">GUEST</h1>')
 			itemSelectedUser = $("#playImages img:first-child").attr("name");
 
 		}else if (playImageChild == "#playImages img:nth-child(2)") {
-			$('#userImage').prepend('<img id="simplePaper" src="../img/simple_paper.png" />')
+			$('#userImage').prepend('<img id="simplePaper" src="../img/simple_paper.png" />');
+			$('#userImage').prepend('<h1 class="guest">GUEST</h1>')
 			itemSelectedUser = $("#playImages img:nth-child(2)").attr("name");
 
 		}else{
-			$('#userImage').prepend('<img id="simpleScissors" src="../img/simple_scissors.png" />')
+			$('#userImage').prepend('<img id="simpleScissors" src="../img/simple_scissors.png" />');
+			$('#userImage').prepend('<h1 class="guest">GUEST</h1>')
 			itemSelectedUser = $("#playImages img:nth-child(3)").attr("name");
 		};
 		
 		if (itemSelectedComputer == "rock"){
-			$('#computerImage').prepend('<img id="" src="../img/simple_rock.png" />')
+			$('#computerImage').prepend('<img id="" src="../img/simple_rock.png" />');
+			$('#computerImage').prepend('<h1 class="computer">COMPUTER</h1>');
 		}else if (itemSelectedComputer == "paper") {
-			$('#computerImage').prepend('<img id="" src="../img/simple_paper.png" />')
+			$('#computerImage').prepend('<img id="" src="../img/simple_paper.png" />');
+			$('#computerImage').prepend('<h1 class="computer">COMPUTER</h1>');
 		}else{
-			$('#computerImage').prepend('<img id="" src="../img/simple_scissors.png" />')
+			$('#computerImage').prepend('<img id="" src="../img/simple_scissors.png" />');
+			$('#computerImage').prepend('<h1 class="computer">COMPUTER</h1>');
 		};
 
 		addResultsToTheTable()
@@ -227,10 +263,12 @@ $(document).ready(function(){
 	}	    
 
 	function choiceRandomComputer() {
+		$('.guest').remove();
 		itemSelectedComputer = get_random(elements);
 	}
 
 	function choiceRandomUser() {
+		$('.computer').remove();
 		itemSelectedUser = get_random(elements);
 	}
 
@@ -244,6 +282,8 @@ $(document).ready(function(){
 
 	//Add results to the table
 	function addResultsToTheTable() {
+		$("article button").removeClass("disable");
+
 		if (itemSelectedUser == itemSelectedComputer){
 			$("#scoreBoardTable").find('tbody')
 		    .append($('<tr>')
@@ -296,5 +336,21 @@ $(document).ready(function(){
 		};	
 	}	
 
+	
+
+	$("article button").click(function() {
+		$('#scoreBoardTable').tableExport({type:'pdf',
+								fileName: 'SCORE-ROCK-PAPER-SICSSORS',
+	                            jspdf:  {orientation: 'l',
+	                                    format: 'a4',
+	                                    margins: {left:10, right:10, top:20, bottom:20},
+	                                    autotable: {styles: {fillColor: 'inherit', 
+	                                                        textColor: 'inherit'},
+	                                                tableWidth: 'auto'}
+	                                    }
+        });
+	});
+
+	$("#scoreBoardTable").datatable();
 });
 

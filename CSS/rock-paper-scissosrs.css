@@ -15,8 +15,30 @@
     color: black; 
     border: 2px solid #4CAF50;
 }*/
+
+/* HEADER */
+header{
+    background: rgba(76,175,80,1);
+    background: -moz-linear-gradient(top, rgba(76,175,80,1) 0%, rgba(77,176,81,1) 1%, rgba(185,254,199,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(76,175,80,1)), color-stop(1%, rgba(77,176,81,1)), color-stop(100%, rgba(185,254,199,1)));
+    background: -webkit-linear-gradient(top, rgba(76,175,80,1) 0%, rgba(77,176,81,1) 1%, rgba(185,254,199,1) 100%);
+    background: -o-linear-gradient(top, rgba(76,175,80,1) 0%, rgba(77,176,81,1) 1%, rgba(185,254,199,1) 100%);
+    background: -ms-linear-gradient(top, rgba(76,175,80,1) 0%, rgba(77,176,81,1) 1%, rgba(185,254,199,1) 100%);
+    background: linear-gradient(to bottom, rgba(76,175,80,1) 0%, rgba(77,176,81,1) 1%, rgba(185,254,199,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4caf50', endColorstr='#b9fec7', GradientType=0 );
+    padding: 1px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 1%;
+}
+
 header h1{
 	text-align: center;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+nav, section{
+    padding: 1%;
 }
 
 nav button{
@@ -115,14 +137,15 @@ article{
 
 .count{
 	text-align: center;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bold;
 }
 
 #play{
-	width: 70%;
+	width: 69%;
     /*background: lightgoldenrodyellow;*/
     float: left;
+    border-right: 1px solid;
 }
 
 #scoreBoard{
@@ -131,6 +154,16 @@ article{
     /*float: left;*/
     float: right;
 }
+
+#scoreBoard button{
+    padding: 1%;
+    margin-top: 3%;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background: #4CAF50;
+    color: white;
+    font-weight: bold;
+    float: right;
+}    
 
 #userImage {
 	width: 50%;
@@ -143,6 +176,15 @@ article{
 	margin-left: 25px;*/
 	width: 20%;
     margin-left: 40%;
+}
+
+.guest, .computer{
+    width: 45%;
+    margin-left: 28%;
+    text-align: center;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color: #4CAF50;
+    border-bottom: 1px solid black;
 }
 
 #computerImage{
@@ -158,18 +200,19 @@ article{
 
 #playImages{
 	width: 100%;
+    margin-top: 1%;
     float: left;
-    background: lightgray;
+    /*background: lightgray;*/
 }
 
 #playImages img{
-	width: 10%;
+	width: 8%;
 	margin-left: 25px;
 	cursor: pointer;
 }
 
 #playImages img:nth-child(1){
-	margin-left: 30%;
+	margin-left: 10%;
 }
 
 /* Score Board Table */
@@ -178,23 +221,30 @@ table.scoreBoardTable {
     width: 100%;
     text-align: center;
     border-collapse: collapse;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 table.scoreBoardTable td, table.scoreBoardTable th {
 	width: 200px;
     padding: 3px 2px;
-    border-bottom: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
 }
 table.scoreBoardTable tbody td {
     font-size: 20px;
-    background-color: #D7FFDF;
+    /*background-color: #D7FFDF;*/
 }
+
+table.scoreBoardTable tbody td:nth-child(1), table.scoreBoardTable tbody td:nth-child(2){
+    border-right: 1px solid #4CAF50;
+}
+
 table.scoreBoardTable thead {
    
 }
 table.scoreBoardTable thead th {
-	color: white;
-	border-right: 1px solid white;
-	background-color: #4CAF50;
+	color: #4CAF50;
+	border-bottom: 1px solid black;
+	background-color: white;
+    text-transform: uppercase;
 }
 table.scoreBoardTable thead th:first-child {
     border-left: none;
