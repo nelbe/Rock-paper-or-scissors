@@ -20,27 +20,23 @@ $(document).ready(function(){
 			$('#roundToAutomaticPlay').hide();
 			$('#roundManualPlay').show();
 	    	$('#roundManualPlay h1').html(round);
-	    	$('#userImage').prepend('<h1 class="guest">GUEST</h1>');
-			$('#computerImage').prepend('<h1 class="computer">COMPUTER</h1>');
+	    	$('#guest').remove();
+			$('#computer').remove();
+	    	$('#userImage').prepend('<h1 id="guest" class="guest">GUEST</h1>');
+			$('#computerImage').prepend('<h1 id="computer" class="computer">COMPUTER</h1>');
 	   	}
 	    else if (this.id == 'automatic') {
+	    	$('#guest').remove();
+			$('#computer').remove();
 	        $('#manual').addClass("disable");
 	        $('#playImages').hide();
 	        $('#roundToAutomaticPlay').show();
 	        $('#roundManualPlay').hide();
 	        $('#roundToAutomaticPlay h1').html(round);
-	        $('#userImage').prepend('<h1 class="guest">GUEST</h1>');
-			$('#computerImage').prepend('<h1 class="computer">COMPUTER</h1>');
+	        $('#userImage').prepend('<h1 id="guest" class="guest">GUEST</h1>');
+			$('#computerImage').prepend('<h1 id="computer" class="computer">COMPUTER</h1>');
 	   	}
 	});
-	
-	// New game button
-	// $('#newGame').click(function() {
-	// 	$('#roundToAutomaticPlay').hide();
-	// 	$('#roundManualPlay').hide();
-	// 	$('#startButton').removeClass("disable");
-	// 	$('#stopButton').removeClass("disable");
-	// }); 
 
 	// Start button
 	$('#startButton').click(function() {
@@ -58,21 +54,18 @@ $(document).ready(function(){
 			roundAutomatic = 1;	
 		};
 		
-		numberAutomaticRound()
+		numberAutomaticRound();
 	});  
 
 	// Stop button
 	$('#stopButton').click(function() {
 		roundAutomatic = 0;
-		// $('#automaticMode').show();
 		$('#numberRounds').prop('disabled', false);
 		$('#startButton').removeClass("disable");
 		$('#stopButton').addClass("disable");
 		$('#automaticMode').removeClass("disable");
 		$("#numberRounds").val('1');
 		$("article button").addClass("disable");
-		
-
 	}); 
 
 	// Exit automatic button
@@ -85,8 +78,7 @@ $(document).ready(function(){
 		$('#computerImage > img').remove();
 		$("#scoreBoardTable").find("tbody>tr").remove();
 		$('.guest').remove();
-		$('.computer').remove();
-		
+		$('.computer').remove();	
 	}); 
 
 	// Exit manual button
@@ -95,7 +87,6 @@ $(document).ready(function(){
 		$('#roundManualPlay').hide();
 		$('#playImages').hide();
 		$('#automatic').removeClass("disable");
-		// $('#playImages').hide();
 		$('#userImage > img').remove();
 		$('#computerImage > img').remove();
 		$("#scoreBoardTable").find("tbody>tr").remove();
@@ -104,19 +95,21 @@ $(document).ready(function(){
 		$('.computer').remove();
 	}); 
 
+	// Control of the number of rounds to be done
 	function numberAutomaticRound() {
 		if ($('select').val() === "unlimited") {
 			round++;
+
 			animAutomatic();
 		}else{
 			roundAutomatic--;
 			round++;
+
 			animAutomatic();
 		};
-
-		
 	}	
 
+	// Control of animation 3, 2, 1 in automatic mode
 	function animAutomatic() {
 		$('#roundToAutomaticPlay h1').html(round + " - PLAYING");
 		$('#userImage img').hide();
@@ -128,7 +121,6 @@ $(document).ready(function(){
 	        $('.count').html(count);
 	        count--;
 	        setTimeout(animAutomatic, 700);
-	        // clearInterval(timer);
 	    }
 	    else {
 	        $('.count').hide();
@@ -137,6 +129,7 @@ $(document).ready(function(){
 	    }
 	}
 
+	// Choice of the user and computer in automatic mode
 	function automaticRound() {
 		choiceRandomComputer();
 		choiceRandomUser();
@@ -172,10 +165,10 @@ $(document).ready(function(){
 		}else{
 			$('#automaticMode').show();
 			$('#roundToAutomaticPlay h1').html(round + " - GAME OVER");
-			// alert("TU JUEGO HA TERMINADO")
 		};
 	}
 
+	// Control of animation 3, 2, 1 in manual mode
 	function animManual() {
 		$('#roundManualPlay h1').html(round + 1 + " - PLAYING");
 		$('#userImage img').hide();
@@ -187,27 +180,22 @@ $(document).ready(function(){
 	        $('.count').html(count);
 	        count--;
 	        setTimeout(animManual, 700);
-	        // clearInterval(timer);
-	    }
-	    else {
+	    }else {
 	        $('.count').hide();
 	        choiceUser();
 	        count = 3;
-	        // $('#playImages').prepend('<img id="rock" src="../img/rock.png" alt="rock" name="rock">');
 	    }
 	}
-
 
 	$( "#playImages img:first-child" ).click(function() {
 		$('#manualMode').hide();
 		$( "#playImages img:first-child").addClass("imageSelected");
 		$( "#playImages img:nth-child(2)").removeClass("imageSelected");
 		$( "#playImages img:nth-child(3)").removeClass("imageSelected");
-
 		
 		playImageChild = "#playImages img:nth-child(1)";
+
 		animManual();
-		// choiceUser($( "#playImages img:nth-child(1)" ));
 	});
 
 	$( "#playImages img:nth-child(2)" ).click(function() {
@@ -217,8 +205,8 @@ $(document).ready(function(){
 		$( "#playImages img:nth-child(3)").removeClass("imageSelected");
 
 		playImageChild = "#playImages img:nth-child(2)";
+
 		animManual();
-	  // choiceUser($( "#playImages img:nth-child(2)" ));
 	});
 
 	$( "#playImages img:nth-child(3)" ).click(function() {
@@ -227,23 +215,24 @@ $(document).ready(function(){
 		$( "#playImages img:nth-child(1)").removeClass("imageSelected");
 		$( "#playImages img:nth-child(2)").removeClass("imageSelected");
 
-	
 		playImageChild = "#playImages img:nth-child(3)";
+
 		animManual();
-	  // choiceUser($( "#playImages img:nth-child(3)" ));
 	});
 
 	get_random = function (elements) {
 	  return elements[Math.floor((Math.random()*elements.length))];
 	} 
 
+	// Choice of the user in manual mode
 	function choiceUser() {
 		round++;
+
 		choiceRandomComputer();
 		deleteImageComputer();
 		deleteImageUser();
+
 	$('.computer').remove();
-	
 		if (playImageChild == "#playImages img:nth-child(1)") {
 			$('#userImage').prepend('<img id="simpleRock" src="../img/simple_rock.png" />');
 			$('#userImage').prepend('<h1 class="guest">GUEST</h1>')
@@ -273,8 +262,6 @@ $(document).ready(function(){
 
 		addResultsToTheTable()
 		$('#manualMode').show();
-	    // $('#computerImage').prepend('<h1>' + itemSelectedComputer + '</h1>')
-	    // $('#computerImage h1').html(itemSelectedComputer)
 	}	    
 
 	function choiceRandomComputer() {
@@ -351,8 +338,7 @@ $(document).ready(function(){
 		};	
 	}	
 
-	
-
+	//Button to export the results of the table in PDF
 	$("article button").click(function() {
 		$('#scoreBoardTable').tableExport({type:'pdf',
 								fileName: 'SCORE-ROCK-PAPER-SICSSORS',
@@ -366,6 +352,5 @@ $(document).ready(function(){
         });
 	});
 
-	$("#scoreBoardTable").datatable();
 });
 

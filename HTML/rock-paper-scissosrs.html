@@ -3,8 +3,11 @@
 	<head>
 		<title>ROCK-PAPER-SCISSORS</title>    
   	<meta charset="UTF-8">
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="../img/favicon.png" />
+    <!-- JQUERY-->
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  	<!-- TABLE EXPORT!-->
+  	<!-- TABLE EXPORT -->
   	<script type="text/javascript" src="../libs/FileSaver/FileSaver.min.js"></script>
     <script type="text/javascript" src="../libs/js-xlsx/xlsx.core.min.js"></script>
     <script type="text/javascript" src="../libs/jsPDF/jspdf.min.js"></script>
@@ -12,16 +15,10 @@
     <script type="text/javascript" src="../tableExport.js"></script>
     <!-- FONT AWESOME ICONS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-
-    <!-- DATATABLE -->
-    <script type="text/javascript" src="../DataTables/datatables.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../DataTables/datatables.min.css"/>
-
     <!-- MY JS AND CSS -->
 		<script type="text/javascript" src="../js/rock-paper-scissosrs.js"></script>
 		<link rel="stylesheet" type="text/css" href="../CSS/rock-paper-scissosrs.css">
 	</head>
-
 	<body>    
     <header>
       <h1>ROCK, PAPER OR SCISSORS</h1>      
@@ -29,7 +26,6 @@
     <nav>
     	<button type="button" id="manual">Manual</button>
     	<button type="button" id="automatic">Automatic</button>
-    	<!--<button type="button" id="newGame">New game</button>-->
     	<div id="roundToAutomaticPlay">
     		<h3>You are playing in automatic mode. How many rounds do you want to play?</h3>
 			<select id="numberRounds">
@@ -58,25 +54,16 @@
 			<hr>
 			<h3>Round: </h3>
 			<h1 id="numberRoundsManual"></h1>
-			
 		</div>
-      <!-- <a href="http://dominio.com/seccion2.html">IR SECCIÓN 2</a>
-      <a href="http://dominio.com/seccion2.html">IR SECCIÓN 3</a> -->
     </nav>
     <section>      
       <article>
-        <!-- <h2>CONTENIDO PRINCIPAL</h2> -->
-        <!-- <p>Este es el contenido principal de mi web</p> -->
         <div id="play">
          	<div id="userImage">
-         		<!-- <p>Guest</p> -->
          		<h1 class="count"></h1>
-         		<!-- <img src="../img/rock.png" alt="rock" name="rock"> -->
          	</div>
          	<div id="computerImage">
-         		<!-- <p>Computer</p> -->
          		<h1 class="count"></h1>
-         		<!-- <img src="../img/rock.png" alt="rock" name="rock">	 -->
          	</div>		
 	        <div id="playImages">
 		    	<img id="rock" src="../img/rock.png" alt="rock" name="rock">
@@ -85,7 +72,6 @@
         	</div>	       
         </div>
         <div id="scoreBoard">
-          <!-- <button>EXPORT <i class="far fa-file-pdf"></i></button> -->
   	      <table class="scoreBoardTable table display" id="scoreBoardTable">
   			    <thead>
   				      <tr>
@@ -102,12 +88,6 @@
       </article>      
     </section>
     <!--<aside>
-      <h3>Banner de publicidad</h3>
-      <a href="http://dominio-externo.com">
-        <img src="http://dominio.com/banner-publicidad.png" alt="banner de publicidad">
-      </a>
-      <h3>Testimonios</h3>
-      <p>Me gusta mucho esta página.</p>
     </aside>-->
     <footer>
       <h4></h4>
