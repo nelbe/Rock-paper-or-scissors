@@ -50,9 +50,14 @@ $(document).ready(function(){
 		$('#startButton').addClass("disable");
 		$('#automaticMode').addClass("disable");
 		$('#stopButton').removeClass("disable");
-		roundAutomatic = parseInt($('select').val());
 		$("#scoreBoardTable").find("tbody>tr").remove();
 
+		if ($('select').val() != "unlimited") {
+			roundAutomatic = parseInt($('select').val());
+		}else{
+			roundAutomatic = 1;	
+		};
+		
 		numberAutomaticRound()
 	});  
 
@@ -100,10 +105,16 @@ $(document).ready(function(){
 	}); 
 
 	function numberAutomaticRound() {
-		roundAutomatic--;
-		round++;
+		if ($('select').val() === "unlimited") {
+			round++;
+			animAutomatic();
+		}else{
+			roundAutomatic--;
+			round++;
+			animAutomatic();
+		};
+
 		
-		animAutomatic();
 	}	
 
 	function animAutomatic() {
@@ -121,14 +132,14 @@ $(document).ready(function(){
 	    }
 	    else {
 	        $('.count').hide();
-	        automaticRound()
+	        automaticRound();
 	        count = 3;
 	    }
 	}
 
 	function automaticRound() {
-		choiceRandomComputer()
-		choiceRandomUser()
+		choiceRandomComputer();
+		choiceRandomUser();
 		
 		if (itemSelectedComputer == "rock"){
 			$('#computerImage').prepend('<img id="" src="../img/simple_rock.png" />');
@@ -157,8 +168,7 @@ $(document).ready(function(){
 		addResultsToTheTable();
 
 		if (roundAutomatic > 0) {
-			setTimeout(function() { numberAutomaticRound(); }, 4000);
-			// numberAutomaticRound();
+				setTimeout(function() { numberAutomaticRound(); }, 4000);
 		}else{
 			$('#automaticMode').show();
 			$('#roundToAutomaticPlay h1').html(round + " - GAME OVER");
